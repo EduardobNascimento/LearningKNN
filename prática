@@ -1,0 +1,17 @@
+import pandas as pd
+from sklearn.datasets import load_iris
+from sklearn.neighbors import KNeighborsClassifier
+
+dataset = load_iris()
+
+knn = KNeighborsClassifier(n_neighbors=15)
+
+knn.fit(dataset.data,dataset.target)
+
+teste = [[3.5,4.1,4.4,1.5]]
+
+result, accuracy = knn.predict(teste),knn.predict_proba(teste)
+
+print(dataset.target_names[result[0]])
+
+print(round(accuracy[0][result[0]],4)*100,"%")
